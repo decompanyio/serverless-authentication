@@ -11,7 +11,7 @@ class Provider {
   }
 
   signin({
-    signin_uri, scope, state, response_type, access_type, prompt
+    signin_uri, scope, state, response_type, access_type, prompt, login_hint
   }) {
     const { id, redirect_uri } = this.config
     const params = {
@@ -32,6 +32,10 @@ class Provider {
     }
     if (prompt) {
       params.prompt = prompt
+    }
+
+    if (login_hint) {
+      params.login_hint = login_hint
     }
     if (!params.client_id || !params.redirect_uri) {
       const message = `Invalid sign in params. client_id: '${

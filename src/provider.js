@@ -121,7 +121,12 @@ class Provider {
 
       attemptAuthorize()
         .then(createMappedProfile)
-        .then((data) => resolveAll(Object.assign({ state }, data)))
+        .then((data) => {
+          return resolveAll(Object.assign({ state: state, profile: data }))
+        })
+        .catch((err)=>{
+          reject(err)
+        })
     })
   }
 }

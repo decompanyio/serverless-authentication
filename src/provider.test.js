@@ -125,7 +125,7 @@ describe('Provider', () => {
         grant_type: 'authorization_code'
       }
 
-      const profile = await new Provider(providerConfig).callback(
+      const {profile} = await new Provider(providerConfig).callback(
         {
           code: 'abcde',
           state: 'state-123'

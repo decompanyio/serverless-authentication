@@ -24,6 +24,8 @@ class Config {
           this.redirect_client_uri = value
         } else if (key === 'TOKEN_SECRET') {
           this.token_secret = value
+        } else if (key === 'REDIRECT_CLIENT_URIS') {
+          this.redirect_client_uris = value.split(',')
         }
       }
     })
@@ -36,6 +38,7 @@ class Config {
       result = this.providers[configProvider] ? this.providers[configProvider] : {}
       result.redirect_uri = Utils.redirectUrlBuilder(this.redirect_uri, provider)
       result.redirect_client_uri = Utils.redirectUrlBuilder(this.redirect_client_uri, provider)
+      result.redirect_client_uris = this.redirect_client_uris
       result.provider = provider
     }
     result.token_secret = this.token_secret

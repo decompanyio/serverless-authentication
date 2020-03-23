@@ -57,13 +57,13 @@ class Utils {
    * @param data {payload: object, options: object}
    * @param config {redirect_client_uri {string}, token_secret {string}}
    */
-  static tokenResponse(data, { redirect_client_uri, token_secret }) {
+  static tokenResponse(data, { custom_redirect_url, redirect_client_uri, token_secret }) {
     const { payload, options } = data.authorizationToken
     const params =
       Object.assign({}, data, {
         authorizationToken: this.createToken(payload, token_secret, options)
       })
-    return { url: this.urlBuilder(redirect_client_uri, params) }
+    return { url: this.urlBuilder(custom_redirect_url?custom_redirect_url:redirect_client_uri, params) }
   }
 
   /**

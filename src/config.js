@@ -26,6 +26,8 @@ class Config {
           this.token_secret = value
         } else if (key === 'REDIRECT_CLIENT_URIS') {
           this.redirect_client_uris = value.split(',')
+        } else if (key === 'EXPIRES_IN') {
+          this.expires_in = Number(value);
         }
       }
     })
@@ -39,6 +41,7 @@ class Config {
       result.redirect_uri = Utils.redirectUrlBuilder(this.redirect_uri, provider)
       result.redirect_client_uri = Utils.redirectUrlBuilder(this.redirect_client_uri, provider)
       result.redirect_client_uris = this.redirect_client_uris
+      result.expires_in = this.expires_in
       result.provider = provider
     }
     result.token_secret = this.token_secret

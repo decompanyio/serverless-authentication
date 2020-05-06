@@ -71,8 +71,8 @@ class Utils {
    * @param params
    * @param config {redirect_client_uri {string}}
    */
-  static errorResponse(params, { redirect_client_uri }) {
-    return { url: this.urlBuilder(redirect_client_uri, params) }
+  static errorResponse(params, { custom_redirect_url, redirect_client_uri }) {
+    return { url: this.urlBuilder(custom_redirect_url?custom_redirect_url:redirect_client_uri, params) }
   }
 
   /**

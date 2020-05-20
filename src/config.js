@@ -25,9 +25,11 @@ class Config {
         } else if (key === 'TOKEN_SECRET') {
           this.token_secret = value
         } else if (key === 'REDIRECT_CLIENT_URIS') {
-          this.redirect_client_uris = value.split(',')
+          this.redirect_client_uris = value?value.split(',').map((v)=>v?v.trim():''):[]
         } else if (key === 'EXPIRES_IN') {
           this.expires_in = Number(value);
+        } else if (key === 'ALLOW_HOSTS_REFRESH_TOKEN') {
+          this.allow_hosts_refresh_token =  value?value.split(',').map((v)=>v?v.trim():''):[]
         }
       }
     })
@@ -45,6 +47,7 @@ class Config {
       result.provider = provider
     }
     result.token_secret = this.token_secret
+    result.allow_hosts_refresh_token = this.allow_hosts_refresh_token
     return result
   }
 }

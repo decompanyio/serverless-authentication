@@ -16,7 +16,7 @@
     "lambda"
   ],
   "dependencies": {
-    "async": "^2.6.0",
+    "async": "^2.6.4",
     "bluebird": "^3.5.1",
     "decamelize": "^2.0.0",
     "jsonwebtoken": "^8.2.1",
